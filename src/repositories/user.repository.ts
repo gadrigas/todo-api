@@ -27,6 +27,12 @@ class UserRepository {
       ...user,
     };
   }
+
+  GetByEmail(email: string) {
+    return this.userRepositories.findOne({
+      where: { email },
+    });
+  }
 }
 
 export const userRepository = new UserRepository();
