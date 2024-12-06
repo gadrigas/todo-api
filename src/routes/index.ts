@@ -8,7 +8,12 @@ import { authRouter } from './auth.router';
  * Permite acesso de qualquer origem, define métodos HTTP permitidos e cabeçalhos aceitos.
  */
 const corsOptions: CorsOptions = {
-  origin: '*', // Permite requisições de qualquer origem.
+  /**
+   * Permite requisições de qualquer origem.
+   * Caso queira aceitar requisições de algo especifique, informe a URL ou o IPv4 que desejar
+   * Caso tenha mais de um, basta utilizar Arrays
+   */
+  origin: '*',
   preflightContinue: false, // Não passa para o próximo middleware em requisições preflight.
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,HTTP', // Métodos HTTP permitidos.
   allowedHeaders: [
