@@ -29,7 +29,7 @@ export class TodoListAPI {
    * Configura a aplicação Express com middlewares e rotas.
    * @private
    */
-  private config(): void {
+  private config() {
     // Middleware para processar requisições JSON
     this.app.use(json());
 
@@ -46,8 +46,8 @@ export class TodoListAPI {
     // Inicia o servidor e escuta na porta especificada
     this.app
       .listen(PORT, 'localhost', () =>
-        console.log('Servidor Iniciado na porta: ' + PORT)
+        console.log('[SERVIDOR] Iniciado na porta: ' + PORT)
       )
-      .on('error', (err) => console.log(err)); // Loga quaisquer erros
+      .on('error', (err) => console.log('[SERVIDOR] ' + err)); // Loga quaisquer erros
   }
 }
