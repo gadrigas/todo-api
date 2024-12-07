@@ -38,10 +38,14 @@ Uma API RESTful para gerenciar tarefas pessoais, desenvolvida com Node.js e Type
    PORT=3000
    DATABASE_URL=postgresql://username:password@localhost:5432/todo_db
    JWT_SECRET=seu-segredo-jwt
-4. Execute as migrações do banco de dados:
-   ```bash
-   npx prisma migrate dev
-   yarn prisma migrate dev
+4. Execute as migrações do banco de dados: 
+   - Usando **Prisma**
+      ```bash
+      npx prisma migrate dev
+      yarn prisma migrate dev
+   - Usando **TypeORM**
+      ```bash
+      npm run typeorm migration:run
 5. Inicie o servidor:
    ```bash
    npm run dev
