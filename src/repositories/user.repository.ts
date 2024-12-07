@@ -11,11 +11,11 @@ class UserRepository {
     this.userRepositories = AppDataSource.getRepository(User);
   }
 
-  async Create({ email, firstName, lastName, password }: Register) {
+  async Create({ email, first_name, last_name, password }: Register) {
     const user = new User();
     user.email = email;
-    user.firstName = firstName;
-    user.lastName = lastName;
+    user.firstName = first_name;
+    user.lastName = last_name;
     user.password = password;
     user.tasks = [];
 
