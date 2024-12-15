@@ -14,7 +14,7 @@ class AuthService {
 
     const data = await userRepository.Create(user);
     const payload = sign(data, process.env.JWT_SECRET, { expiresIn: '3d' });
-    
+
     return {
       user: data,
       token: payload,
@@ -23,10 +23,21 @@ class AuthService {
 
   async Login({ email, password }: Login) {
     const user = await userRepository.GetByEmail(email);
-    if (!user) throw new Error('[SERVIDOR] Usuário não encontrado.');
+    if (!user)
+      throw new Error(
+        JSON.stringify({
+          status: 404,
+          message: '[SERVIDOR] Usuário não encontrado.',
+        })
+      );
 
     const comparePassword = await compare(password, user.password);
-    if (!comparePassword) throw new Error('[SERVIDOR] Senha incorreta.');
+    if (!comparePassword) throw new Error(
+      JSON.stringify({
+        status: 400,
+        message: '[SERVIDOR] Senha incorreta.',
+      })
+    );
 
     const payload = sign(user, process.env.JWT_SECRET, { expiresIn: '3d' });
 

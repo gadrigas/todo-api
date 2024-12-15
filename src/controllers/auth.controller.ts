@@ -19,7 +19,7 @@ class AuthController {
       const data = await authService.Register({ email, first_name, last_name, password });
       res.status(201).json(data);
     } catch (err) {
-      res.status(400).json({ message: err });
+      res.status(err.status).json(err);
     }
   }
 
@@ -30,7 +30,7 @@ class AuthController {
       const data = await authService.Login({ email, password });
       res.status(200).json(data); 
     } catch (err) {
-      res.status(400).json({ message: err });
+      res.status(err.status).json(err);
     }
   }
 }
